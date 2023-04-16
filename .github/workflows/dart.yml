@@ -62,7 +62,7 @@ jobs:
       - name: Upload to gdrive
         uses: adityak74/google-drive-upload-git-action@main
         with:
-          credentials: ${{ secrets.credentials }} #it's the key from Google Drive API 
+          credentials: ${{ secrets.CREDENTIALS }} #it's the key from Google Drive API 
           filename: "build/app/outputs/flutter-apk/app-release.apk"
-          folderId: ${{ secrets.folderId }} #the encrode in the url of google drive 
+          folderId: ${{ secrets.FOLDERID }} #the encrode in the url of google drive 
           overwrite: "true" # optional boolean
