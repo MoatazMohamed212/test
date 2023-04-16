@@ -55,10 +55,9 @@ jobs:
       - run: flutter build appbundle
       
       - name: Archive files
-         run: |
-            sudo apt-get update
-           sudo apt-get install zip
-           zip -r archive.zip *
+         run:sudo apt-get update
+         run:sudo apt-get install zip
+         run:zip -r archive.zip *
 
       - name: Upload to gdrive
         uses: adityak74/google-drive-upload-git-action@main
