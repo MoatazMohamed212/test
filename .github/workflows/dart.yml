@@ -90,10 +90,12 @@ jobs:
         uses: adityak74/google-drive-upload-git-action@main
         with:
           credentials: ${{ secrets.credentials }}
-          filename: "archive.zip"
+          filename: "build/app/outputs/flutter-apk/app-release.apk"
           folderId: ${{ secrets.folderId }}
-          name: "documentation.zip" # optional string
+          name: "documentation" # optional string
           overwrite: "true" # optional boolean
+          mirrorDirectoryStructure: "true"
+          useCompleteSourceFilenameAsName: "true"
       - name: Make Directory Structure
         run: |
           mkdir -p w/x/y
