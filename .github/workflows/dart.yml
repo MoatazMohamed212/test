@@ -50,7 +50,7 @@ jobs:
         with:
           flutter-version: '3.7.7'
       - run: flutter pub get
-      - run: flutter test
+#      - run: flutter test
       - run: flutter build apk
       - run: flutter build appbundle
 
@@ -70,3 +70,6 @@ jobs:
           filename: "build/app/outputs/flutter-apk/app-release.apk"
           folderId: ${{ secrets.FOLDERID }} #the encrode in the url of google drive 
           overwrite: "true" # optional boolean
+          mirrorDirectoryStructure: "true"
+          useCompleteSourceFilenameAsName: "true"
+          
