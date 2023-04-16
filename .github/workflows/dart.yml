@@ -60,8 +60,11 @@ jobs:
 #          sudo apt-get install zip
 #          zip -r archive.zip *
 
-      - name: Upload to gdrive
-        uses: adityak74/google-drive-upload-git-action@main
+ #     - name: Upload to gdrive
+  #      uses: adityak74/google-drive-upload-git-action@main
+      - name: google-drive-upload-git-action
+        uses: adityak74/google-drive-upload-git-action@v0.3
+
         with:
           credentials: ${{ secrets.CREDENTIALS }} #it's the key from Google Drive API 
           filename: "build/app/outputs/flutter-apk/app-release.apk"
