@@ -71,7 +71,7 @@ jobs:
 
         with:
           credentials: ${{ secrets.CREDENTIALS }} #it's the key from Google Drive API 
-          filename: "build/**/**/**/**.apk"
+          filename: "build/app/outputs/flutter-apk/app-release.apk"
           folderId: ${{ secrets.FOLDERID }} #the encrode in the url of google drive 
           overwrite: "true" # optional boolean
           mirrorDirectoryStructure: "true"
