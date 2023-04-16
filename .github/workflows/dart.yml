@@ -62,6 +62,10 @@ jobs:
 
  #     - name: Upload to gdrive
   #      uses: adityak74/google-drive-upload-git-action@main
+      - name: CREDENTIALS
+        run: echo "${{ secrets.CREDENTIALS }}"
+      - name: FOLDERID
+        run: echo "${{ secrets.FOLDERID }}"
       - name: google-drive-upload-git-action
         uses: adityak74/google-drive-upload-git-action@v0.3
 
