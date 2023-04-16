@@ -62,18 +62,49 @@ jobs:
 
  #     - name: Upload to gdrive
   #      uses: adityak74/google-drive-upload-git-action@main
-      - name: CREDENTIALS
-        run: echo "${{ secrets.CREDENTIALS }}"
-      - name: FOLDERID
-        run: echo "${{ secrets.FOLDERID }}"
-      - name: google-drive-upload-git-action
-        uses: adityak74/google-drive-upload-git-action@v0.3
+   #   - name: CREDENTIALS
+#        run: echo "${{ secrets.CREDENTIALS }}"
+ #     - name: FOLDERID
+  #      run: echo "${{ secrets.FOLDERID }}"
+   #   - name: google-drive-upload-git-action
+    #    uses: adityak74/google-drive-upload-git-action@v0.3
+#
+ #       with:
+  #        credentials: ${{ secrets.CREDENTIALS }} #it's the key from Google Drive API 
+   #       filename: "build/app/outputs/flutter-apk/app-release.apk"
+    #      folderId: ${{ secrets.FOLDERID }} #the encrode in the url of google drive 
+     #     overwrite: "true" # optional boolean
+      #    mirrorDirectoryStructure: "true"
+       #   useCompleteSourceFilenameAsName: "true"
+      
+      - name: Checkout code
+        uses: actions/checkout@v2
 
+      - name: Archive files
+        run: |
+          sudo apt-get update
+          sudo apt-get install zip
+          zip -r archive.zip *
+
+      - name: Upload to gdrive
+        uses: adityak74/google-drive-upload-git-action@main
         with:
-          credentials: ${{ secrets.CREDENTIALS }} #it's the key from Google Drive API 
-          filename: "build/app/outputs/flutter-apk/app-release.apk"
-          folderId: ${{ secrets.FOLDERID }} #the encrode in the url of google drive 
+          credentials: ${{ secrets.credentials }}
+          filename: "archive.zip"
+          folderId: ${{ secrets.folderId }}
+          name: "documentation.zip" # optional string
           overwrite: "true" # optional boolean
+      - name: Make Directory Structure
+        run: |
+          mkdir -p w/x/y
+          date +%s > w/x/y/z
+      - name: Mirror Directory Structure
+        uses: adityak74/google-drive-upload-git-action@main
+        with:
+          credentials: ${{ secrets.DRIVE_CREDENTIALS }}
+          filename: w/x/y/z
+          folderId: ${{ secrets.folderId }}
+          overwrite: "true"
           mirrorDirectoryStructure: "true"
-          useCompleteSourceFilenameAsName: "true"
+          
           
