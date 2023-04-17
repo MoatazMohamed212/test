@@ -90,7 +90,7 @@ jobs:
         uses: adityak74/google-drive-upload-git-action@main
         with:
           credentials: ${{ secrets.credentials }}
-          filename: test.txt
+          filename: "test.txt"
           
           folderId: ${{ secrets.folderId }}
           name: "documentation" # optional string
