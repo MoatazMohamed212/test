@@ -41,8 +41,8 @@ jobs:
           credentials: ${{ secrets.credentials }}
           filename: "test.txt"
           folderId: ${{ secrets.folderId }}
-          name: ${{steps.date.outputs.date}}.apk
+          name: ${{steps.date.outputs.date}}.txt
           #name: "documentation" # optional string
           overwrite: "true" # optional boolean
-          mirrorDirectoryStructure: "true"
-          useCompleteSourceFilenameAsName: "true"
+     #     mirrorDirectoryStructure: "true"
+     #     useCompleteSourceFilenameAsName: "true"
