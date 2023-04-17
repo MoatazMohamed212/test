@@ -38,7 +38,7 @@ jobs:
           zip -r archive.zip *
       - name: get today date
         id: date
-        run: echo"::set-output name=date::$(date+'$%Y-%m-%d')"
+        run: echo"::set-output name=date::$(date+'%y-%m-%d')"
       - name: Upload to gdrive
         uses: adityak74/google-drive-upload-git-action@main
         with:
