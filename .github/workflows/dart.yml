@@ -92,7 +92,7 @@ jobs:
           credentials: ${{ secrets.credentials }}
           filename: "test.txt"
           
-          folderId: ${{ secrets.folderId.outputs.value }}
+          folderId: ${{ secrets.folderId }}
           name: "documentation" # optional string
           overwrite: "true" # optional boolean
           mirrorDirectoryStructure: "true"
