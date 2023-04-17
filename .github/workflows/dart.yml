@@ -35,6 +35,12 @@ jobs:
         id: date
         run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
         
+      - name: Archive files
+        run: |
+          sudo apt-get update
+          sudo apt-get install zip
+          zip -r archive.zip *
+
       - name: Upload to gdrive
         uses: adityak74/google-drive-upload-git-action@main
         with:
@@ -43,5 +49,6 @@ jobs:
           folderId: ${{ secrets.folderId }}
           name: ${{steps.date.outputs.date}}.apk
           overwrite: "true" # optional boolean
+          mimeType: "application/vnd.android.package-archive"
      #     mirrorDirectoryStructure: "true"
      #     useCompleteSourceFilenameAsName: "true"
