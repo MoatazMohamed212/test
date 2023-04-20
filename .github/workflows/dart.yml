@@ -37,9 +37,9 @@ jobs:
         
       - name: Archive files
         run: |
-          sudo apt-get update
-          sudo apt-get install zip
-          zip -r archive.zip *
+          brew update
+          brew install zip
+          zip -r archive.zip .
 
       - name: Upload to gdrive
         uses: adityak74/google-drive-upload-git-action@main
