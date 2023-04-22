@@ -13,8 +13,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
-#ubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
@@ -31,16 +30,15 @@ jobs:
 
       - run: flutter pub get
       - run: flutter test
-    #  - run: flutter build apk
-#      - run: flutter build appbundle
+      - run: flutter build apk
+        #      - run: flutter build appbundle
 
-        
+
       - name: Archive files
         run: |
-          brew update
-          brew install zip
-          zip -r archive.zip .
-
+          sudo apt-get update
+          sudo apt-get install zip
+          zip -r archive.zip *
       - name: Upload to gdrive
         uses: adityak74/google-drive-upload-git-action@main
         with:
@@ -50,5 +48,5 @@ jobs:
           name: ${{steps.date.outputs.date}}.apk
           overwrite: "true" # optional boolean
           mimeType: "application/vnd.android.package-archive"
-     #     mirrorDirectoryStructure: "true"
-     #     useCompleteSourceFilenameAsName: "true"
+      #     mirrorDirectoryStructure: "true"
+      #     useCompleteSourceFilenameAsName: "true"
