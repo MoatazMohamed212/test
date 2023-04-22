@@ -27,7 +27,9 @@ jobs:
       - name: get today date
         id: date
         run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
-
+      - name: Set up local.properties
+        run: echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"
+     
       - run: flutter pub get
       - run: flutter test
       - run: flutter build apk
