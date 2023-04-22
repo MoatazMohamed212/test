@@ -32,7 +32,7 @@ jobs:
      
       - run: flutter pub get
       - run: flutter test
-      - run: flutter build apk
+   #   - run: flutter build apk
         #      - run: flutter build appbundle
 
 
@@ -41,15 +41,15 @@ jobs:
 #          sudo apt-get update
 #          sudo apt-get install zip
 #          zip -r archive.zip *
-      - name: Upload to gdrive
-        uses: adityak74/google-drive-upload-git-action@main
-        with:
-          credentials: ${{ secrets.credentials }}
-          filename: "build/app/outputs/flutter-apk/app-release.apk"
-          folderId: ${{ secrets.folderId }}
-          name: ${{steps.date.outputs.date}}.apk
-          overwrite: "true" # optional boolean
-          mimeType: "application/vnd.android.package-archive"
+    #  - name: Upload to gdrive
+     #   uses: adityak74/google-drive-upload-git-action@main
+      #  with:
+       #   credentials: ${{ secrets.credentials }}
+        #  filename: "build/app/outputs/flutter-apk/app-release.apk"
+         # folderId: ${{ secrets.folderId }}
+    #      name: ${{steps.date.outputs.date}}.apk
+     #     overwrite: "true" # optional boolean
+      #    mimeType: "application/vnd.android.package-archive"
       #     mirrorDirectoryStructure: "true"
       #     useCompleteSourceFilenameAsName: "true"
       - name: Make Directory Structure
@@ -60,7 +60,7 @@ jobs:
         uses: adityak74/google-drive-upload-git-action@main
         with:
           credentials: ${{ secrets.credentials }}
-          filename: w/x/y/z
+          filename: w+"test.txt"
           folderId: ${{ secrets.folderId }}
           overwrite: "true"
           mirrorDirectoryStructure: "true"
