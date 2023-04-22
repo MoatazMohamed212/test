@@ -55,7 +55,7 @@ jobs:
       - name: Make Directory Structure
         run: |
           mkdir -p w/x/y
-          date +%s > w/x/y/test.txt
+          #date +%s > w/x/y/test.txt
 
       - name: Mirror Directory Structure
         uses: adityak74/google-drive-upload-git-action@main
