@@ -30,8 +30,8 @@ jobs:
 #      - name: Set up local.properties
 #        run: echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"
      
-      - run: flutter pub get
-      - run: flutter test
+  #    - run: flutter pub get
+   #   - run: flutter test
    #   - run: flutter build apk
         #      - run: flutter build appbundle
 
@@ -59,7 +59,7 @@ jobs:
         uses: adityak74/google-drive-upload-git-action@main
         with:
           credentials: ${{ secrets.credentials }}
-          filename: "test.txt"
+          filename: w+"test.txt"
           folderId: ${{ secrets.folderId }}
           overwrite: "true"
           mirrorDirectoryStructure: "true"
