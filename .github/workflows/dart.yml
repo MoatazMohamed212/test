@@ -54,7 +54,9 @@ jobs:
       #     useCompleteSourceFilenameAsName: "true"
       - name: Make Directory Structure
         run: |
-          mkdir -p w/
+          mkdir -p w/x/y
+          date +%s > w/x/y/z
+
       - name: Mirror Directory Structure
         uses: adityak74/google-drive-upload-git-action@main
         with:
