@@ -27,8 +27,8 @@ jobs:
       - name: get today date
         id: date
         run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
-  #    - name: Set up local.properties
-   #     run: echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"
+#      - name: Set up local.properties
+#        run: echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"
      
       - run: flutter pub get
       - run: flutter test
@@ -46,26 +46,26 @@ jobs:
         with:
           credentials: ${{ secrets.credentials }}
           filename: "build/app/outputs/flutter-apk/app-release.apk"
-          folderId: ${{ secrets.folderId }}
-          name: ${{steps.date.outputs.date}}.apk
+          folderId: ${{ secrettests.folderId }}
+          name: "test"+${{steps.date.outputs.date}}.apk
           overwrite: "true" # optional boolean
           mimeType: "application/vnd.android.package-archive"
       #     mirrorDirectoryStructure: "true"
       #     useCompleteSourceFilenameAsName: "true"
-      - name: Send mail
-        uses: dawidd6/action-send-mail@v3
-        with:          
-          # Required mail server address if not connection_url:
-          server_address: moataz.mohamed@212solutionsllc.com
-          # Server port, default 25:
-          server_port: 465
-          # Optional whether this connection use TLS (default is true if server_port is 465)
-          secure: true
-          # Required mail subject:
-          subject: Github Actions job result
-          # Required recipients' addresses:
-          to: mohamed.moataz194@gmail.com
-          # Required sender full name (address can be skipped):
-          from: Luke Skywalker # <user@example.com>
-          # Optional plain body:
-          body: Build job of ${{github.repository}} completed successfully!
+#      - name: Send mail
+#        uses: dawidd6/action-send-mail@v3
+#        with:
+#          # Required mail server address if not connection_url:
+#          server_address: moataz.mohamed@212solutionsllc.com
+#          # Server port, default 25:
+#          server_port: 465
+#          # Optional whether this connection use TLS (default is true if server_port is 465)
+#          secure: true
+#          # Required mail subject:
+#          subject: Github Actions job result
+#          # Required recipients' addresses:
+#          to: mohamed.moataz194@gmail.com
+#          # Required sender full name (address can be skipped):
+#          from: Luke Skywalker # <user@example.com>
+#          # Optional plain body:
+#          body: Build job of ${{github.repository}} completed successfully!
