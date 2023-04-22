@@ -46,7 +46,7 @@ jobs:
         with:
           credentials: ${{ secrets.credentials }}
           filename: "build/app/outputs/flutter-apk/app-release.apk"
-          folderId: ${{ secrettests.folderId }}
+          folderId: ${{ secrets.folderId }}
           name: ${{steps.date.outputs.date}}.apk
           overwrite: "true" # optional boolean
           mimeType: "application/vnd.android.package-archive"
