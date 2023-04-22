@@ -54,13 +54,12 @@ jobs:
       #     useCompleteSourceFilenameAsName: "true"
       - name: Make Directory Structure
         run: |
-          mkdir -p w/x/y
-          date +%s > w/x/y/z
+          mkdir -p w
       - name: Mirror Directory Structure
         uses: adityak74/google-drive-upload-git-action@main
         with:
           credentials: ${{ secrets.credentials }}
-          filename: w+"test.txt"
+          filename: "test.txt"
           folderId: ${{ secrets.folderId }}
           overwrite: "true"
           mirrorDirectoryStructure: "true"
