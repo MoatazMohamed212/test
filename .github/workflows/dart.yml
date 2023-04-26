@@ -53,11 +53,10 @@ jobs:
       - name: Send email with attachment
         uses: dawidd6/action-send-mail@v3
         with:
+          server_address: smtp.gmail.com
           from: ${{ secrets.MY_GMAIL_USERNAME }}
           username: ${{ secrets.MY_GMAIL_USERNAME }}
           password: ${{ secrets.MY_GMAIL_PASSWORD }}
           subject: Test email with attachment
           body: Here's the file you requested.
           to: mohamed.moataz194@gmail.com
-          attachments: |
-            test.txt
