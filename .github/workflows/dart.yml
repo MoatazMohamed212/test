@@ -44,8 +44,6 @@ jobs:
           overwrite: "true" # optional boolean
           mimeType: "application/vnd.android.package-archive"
       - name: Get file URL
-        run: echo "File URL: https://drive.google.com/uc?id=${{ steps.upload-file.outputs.id }}"
-      - name: Get file URL
         run: |
           echo "File URL: https://drive.google.com/uc?id=$(cat ${{ steps.upload.outputs.fileId }})"
           echo "File URL: ${{ steps.upload.outputs.fileId }}"
