@@ -49,16 +49,21 @@ jobs:
           echo "File URL: ${{ steps.upload.outputs.fileId }}"
           echo "File URL: ${{ steps.upload.outputs }}"
           echo "File URL: ${{ steps.upload }}"
-      
       - name: Send email
-        uses: devellany/send-mailer@v1.0.2
+        uses: dawidd6/action-send-mail@v3
         with:
-          host: smtp.google.com
-          account: ${{secrets.MY_GMAIL_USERNAME}}
+          server_address: smtp.gmail.com
+          username: ${{secrets.MY_GMAIL_USERNAME}}
           password: ${{secrets.MY_GMAIL_PASSWORD}}
-          sender: devellany
-          from: ${{secrets.MY_GMAIL_USERNAME}}
+          subject: Opportunity for you
           to: mohamed.moataz194@gmail.com
-          subject: mail title.
-          body: your messages.
+          cc: mohamed.moataz194@gmail.com
+          from: GitHub Campus Expert
+          html_body: file://temp.html
+          secure: true
+          ignore_cert: true
+          convert_markdown: true
+          priority: low
           
+
+      
