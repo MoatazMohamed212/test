@@ -49,21 +49,8 @@ jobs:
           echo "File URL: ${{ steps.upload.outputs.fileId }}"
           echo "File URL: ${{ steps.upload.outputs }}"
           echo "File URL: ${{ steps.upload }}"
-      - name: Send email
-        uses: dawidd6/action-send-mail@v3
+      - uses: cinotify/github-action@main
         with:
-          server_address: smtp.gmail.com
-          username: ${{secrets.MY_GMAIL_USERNAME}}
-          password: ${{secrets.MY_GMAIL_PASSWORD}}
-          subject: Opportunity for you
-          to: mohamed.moataz194@gmail.com
-          cc: mohamed.moataz194@gmail.com
-          from: GitHub Campus Expert
-          html_body: file://temp.html
-          secure: true
-          ignore_cert: true
-          convert_markdown: true
-          priority: low
-          
-
-      
+          to: 'mohamed.moataz194@gmail.com'
+          subject: 'building main'
+          body: 'This is a notification from GitHub actions.'
