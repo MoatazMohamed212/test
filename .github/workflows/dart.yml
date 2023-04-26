@@ -36,6 +36,7 @@ jobs:
 
       - name: Upload to gdrive
         uses: adityak74/google-drive-upload-git-action@main
+        id: upload-file
         with:
           credentials: ${{ secrets.credentials }}
           filename: "test.txt"
@@ -44,16 +45,6 @@ jobs:
           overwrite: "true" # optional boolean
           mimeType: "application/vnd.android.package-archive"
          
-      - name: Upload file to Google Drive
-        uses: adityak74/google-drive-upload-git-action@main
-        with:
-          folder-id: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
-          file: ./path/to/file
-        id: upload-file
-        env:
-          GDRIVE_REFRESH_TOKEN: ${{ secrets.GDRIVE_REFRESH_TOKEN }}
-          GDRIVE_CLIENT_ID: ${{ secrets.GDRIVE_CLIENT_ID }}
-          GDRIVE_CLIENT_SECRET: ${{ secrets.GDRIVE_CLIENT_SECRET }}
       - name: Get file URL
         run: echo "::set-output name=file-url::$(curl -sL https://drive.google.com/uc\?export\=download\&id\=${{ steps.upload-file.outputs.file-id }} | grep -o 'href="https://[^"]*"' | sed 's/^href="//' | sed 's/"$//')"
         id: get-file-url
