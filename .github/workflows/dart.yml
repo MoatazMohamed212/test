@@ -50,13 +50,15 @@ jobs:
           echo "File URL: ${{ steps.upload.outputs }}"
           echo "File URL: ${{ steps.upload }}"
       
-      - name: Send email with attachment
-        uses: dawidd6/action-send-mail@v3
+      - name: Send email
+        uses: devellany/send-mailer@v1.0.2
         with:
-          server_address: smtp.gmail.com
-          from: ${{ secrets.MY_GMAIL_USERNAME }}
-          username: ${{ secrets.MY_GMAIL_USERNAME }}
-          password: ${{ secrets.MY_GMAIL_PASSWORD }}
-          subject: Test email with attachment
-          body: Here's the file you requested.
+          host: smtp.google.com
+          account: ${{secrets.MY_GMAIL_USERNAME}}
+          password: ${{secrets.MY_GMAIL_PASSWORD}}
+          sender: devellany
+          from: ${{secrets.MY_GMAIL_USERNAME}}
           to: mohamed.moataz194@gmail.com
+          subject: mail title.
+          body: your messages.
+          
