@@ -43,18 +43,7 @@ jobs:
           folderId: ${{ secrets.folderId }}
           overwrite: "true" # optional boolean
           mimeType: "application/vnd.android.package-archive"
-         
       - name: Get file URL
-        run: echo "::set-output name=file-url::$(curl -sL https://drive.google.com/uc\?export\=download\&id\=${{ steps.upload-file.outputs.file-id }} | grep -o 'href="https://[^"]*"' | sed 's/^href="//' | sed 's/"$//')"
-        id: get-file-url
-        shell: bash
-      - name: Get uploaded file URL
         run: |
-          ACCESS_TOKEN=$(cat token.json | jq -r '.access_token')
-          FILE_ID=$(curl --silent --request GET \
-            --header "Authorization: Bearer $ACCESS_TOKEN" \
-            --header 'Accept: application/json' \
-            'https://www.googleapis.com/drive/v3/files?q=name%20%3D%20%27filename.txt%27' | grep -oP '(?<="id": ")[^"]+')
-          FILE_URL="https://drive.google.com/uc?id=$FILE_ID&export=download"
-          echo "File URL: $FILE_URL"
-
+          echo "File URL: https://drive.google.com/uc?id=$(cat ${{ steps.upload-file.outputs.fileId }})"
+      
