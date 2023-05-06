@@ -54,4 +54,4 @@ jobs:
         with:
           to: 'mohamed.moataz194@gmail.com'
           subject: 'test app ${{steps.date.outputs.date}}'
-          body: 'Apk https://drive.google.com/uc?id=${{ steps.upload-file.outputs.id }} .'
+          body: 'Apk https://drive.google.com/uc?id=${{ steps.upload-file.outputs.id }} \n ${{ steps.upload.outputs.fileId }} \n ${{ steps.upload.outputs.fileId }} \n ${{ steps.upload.outputs }} \n ${{ steps.upload }}.'
