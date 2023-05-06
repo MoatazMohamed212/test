@@ -43,28 +43,12 @@ jobs:
           folderId: ${{ secrets.folderId }}
           overwrite: "true" # optional boolean
           mimeType: "application/vnd.android.package-archive"
-          
-      
-      - name: Get link to uploaded file
-        id: get-link
-        run: |
-          curl -s -H "Authorization: Bearer ${{ secrets.credentials }}" \
-               "https://www.googleapis.com/drive/v3/files/$(jq -r .id upload-metadata.json)?fields=webContentLink" \
-               > test.txt
-        shell: bash
-
-      - name: Display link to uploaded file
-        run: cat test.txt
-        
+            
       - name: Get file URL
         run: |
-          echo "File URL: https://drive.google.com/uc?id=$(cat ${{ steps.upload.outputs.fileId }})"
-          echo "File URL: ${{ steps.upload.outputs.fileId }}"
-          echo "File URL: ${{ steps.upload.outputs }}"
-          echo "File URL: ${{ steps.upload }}"
-          echo "File URL: ${{ steps.upload-file.outputs.id }}"
+          echo "File URL: ${{ steps.upload.outputs.url }}"
       - uses: cinotify/github-action@main
         with:
           to: 'mohamed.moataz194@gmail.com'
           subject: 'test app ${{steps.date.outputs.date}}'
-          body: 'Apk https://drive.google.com/uc?id=${{ steps.upload-file.outputs.id }}.   \n.    https://drive.google.com/uc?id=${{ steps.upload.outputs.fileId }}.  \n   https://drive.google.com/uc?id=$(cat ${{ steps.upload.outputs.fileId }})'
+          body: 'Apk {{ steps.upload.outputs.url }} ||  https://drive.google.com/uc?id=${{ steps.upload-file.outputs.id }}.   \n.    https://drive.google.com/uc?id=${{ steps.upload.outputs.fileId }}.  \n   https://drive.google.com/uc?id=$(cat ${{ steps.upload.outputs.fileId }})'
