@@ -41,6 +41,7 @@ jobs:
           credentials: ${{ secrets.credentials }}
           filename: "test.txt"
           folderId: ${{ secrets.folderId }}
+          name: test.apk
           overwrite: "true" # optional boolean
          # mimeType: "application/vnd.android.package-archive"
             
