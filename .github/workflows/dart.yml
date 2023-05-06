@@ -44,11 +44,20 @@ jobs:
           overwrite: "true" # optional boolean
           mimeType: "application/vnd.android.package-archive"
             
+      
+      - name: Check if upload was successful
+        run: |
+          if [ -z "${{ steps.upload.outputs.url }}" ]; then
+            echo "Upload failed, see logs for details."
+          else
+            echo "Upload succeeded: ${{ steps.upload.outputs.url }}"
+          fi
+          
       - name: Get file URL
         run: |
           echo "File URL: ${{ steps.upload.outputs.url }}"
-      - uses: cinotify/github-action@main
-        with:
-          to: 'mohamed.moataz194@gmail.com'
-          subject: 'test app ${{steps.date.outputs.date}}'
-          body: 'Apk ${{ steps.upload.outputs.url }} '
+   #   - uses: cinotify/github-action@main
+    #    with:
+     #     to: 'mohamed.moataz194@gmail.com'
+      #    subject: 'test app ${{steps.date.outputs.date}}'
+       #   body: 'Apk ${{ steps.upload.outputs.url }} '
