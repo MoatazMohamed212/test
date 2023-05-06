@@ -48,7 +48,7 @@ jobs:
       - name: Check if upload was successful
         run: |
           if [ -z "${{ steps.upload.outputs.url }}" ]; then
-            echo "Upload failed, see logs for details."
+            echo "Upload failed, see logs for details.${{ steps.upload.outputs }} ."
           else
             echo "Upload succeeded: ${{ steps.upload.outputs.url }}"
           fi
