@@ -48,7 +48,7 @@ jobs:
       - name: Get link to uploaded file
         id: get-link
         run: |
-          curl -s -H "Authorization: Bearer ${{ secrets.GOOGLE_DRIVE_TOKEN }}" \
+          curl -s -H "Authorization: Bearer ${{ secrets.credentials }}" \
                "https://www.googleapis.com/drive/v3/files/$(jq -r .id upload-metadata.json)?fields=webContentLink" \
                > test.txt
         shell: bash
