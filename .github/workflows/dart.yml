@@ -49,6 +49,7 @@ jobs:
           echo "File URL: ${{ steps.upload.outputs.fileId }}"
           echo "File URL: ${{ steps.upload.outputs }}"
           echo "File URL: ${{ steps.upload }}"
+          echo "File URL: ${{ steps.upload-file.outputs.id }}"
       - uses: cinotify/github-action@main
         with:
           to: 'mohamed.moataz194@gmail.com'
