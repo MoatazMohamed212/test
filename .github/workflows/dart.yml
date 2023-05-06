@@ -56,7 +56,7 @@ jobs:
           
       - name: Get file URL
         run: |
-          echo "File URL: ${{ steps.upload.outputs.url }}"
+          echo "File URL: ${{ steps.upload.outputs }}"
    #   - uses: cinotify/github-action@main
     #    with:
      #     to: 'mohamed.moataz194@gmail.com'
