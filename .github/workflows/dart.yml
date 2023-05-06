@@ -42,7 +42,7 @@ jobs:
           filename: "test.txt"
           folderId: ${{ secrets.folderId }}
           overwrite: "true" # optional boolean
-          mimeType: "application/vnd.android.package-archive"
+         # mimeType: "application/vnd.android.package-archive"
             
       
       - name: Check if upload was successful
