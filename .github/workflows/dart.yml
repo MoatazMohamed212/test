@@ -40,23 +40,6 @@ jobs:
         with:
           appId: ${{secrets.FIREBASE_APP_ID}}
           token: ${{secrets.TOKEN}}
+#          serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           groups: testers
-          file: app/build/outputs/apk/release/app-release-unsigned.apk
-        
- #     - name: Archive files
-  #      run: |
-   #       sudo apt-get update
-    #      sudo apt-get install zip
-     #     zip -r archive.zip *
-
-    #  - name: Upload to gdrive
-     #   uses: adityak74/google-drive-upload-git-action@main
-      #  with:
-       #   credentials: ${{ secrets.credentials }}
-      #    filename: "build/app/outputs/flutter-apk/app-release.apk"
-       #   folderId: ${{ secrets.folderId }}
-        #  name: ${{steps.date.outputs.date}}.apk
-         # overwrite: "true" # optional boolean
-         # mimeType: "application/vnd.android.package-archive"
-     #     mirrorDirectoryStructure: "true"
-     #     useCompleteSourceFilenameAsName: "true"
+          file: build/app/outputs/flutter-apk/app-release.apk
